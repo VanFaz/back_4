@@ -6,7 +6,7 @@ CREATE TABLE applications (
     birthdate DATE NOT NULL,
     gender ENUM('male', 'female') NOT NULL,
     bio TEXT NOT NULL,
-    contract_accepted TINYINT(1) NOT NULL,
+    agreement TINYINT(1) NOT NULL,
     PRIMARY KEY (id)
 );
 
