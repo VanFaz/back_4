@@ -234,7 +234,7 @@ function isChecked($field) {
                         <div class="error-message"><?php echo htmlspecialchars($errors['name']); ?></div>
                     <?php endif; ?>
                 </label><br>
-                <label for="phone">
+                 <label for="phone">
                     Телефон:<br>
                     <input id="phone" type="tel" name="phone" placeholder="+7 (918) 123-45-67" required
                            value="<?php echo htmlspecialchars(getFieldValue('phone')); ?>"
@@ -242,6 +242,8 @@ function isChecked($field) {
                     <?php if (isset($errors['phone'])): ?>
                         <div class="error-message"><?php echo htmlspecialchars($errors['phone']); ?></div>
                     <?php endif; ?>
+                </label><br>
+
                 <label for="field-email">
                     Электронная почта:<br>
                      <input id="email" name="email" type="email" placeholder="ogurec@example.com" required
