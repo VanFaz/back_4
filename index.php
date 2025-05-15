@@ -227,8 +227,8 @@ function isChecked($field) {
             <form action="submit.php" method="POST">
                 <label for="field-name-1">
                     ФИО:<br>
-                    <input id="field-name-1" name="name" placeholder="Иванов Иван Алекса" required>
-                    value="<?php echo htmlspecialchars(getFieldValue('name')); ?>"
+                    <input id="name" name="name" placeholder="Иванов Иван Иванович" required
+                           value="<?php echo htmlspecialchars(getFieldValue('name')); ?>"
                            class="<?php echo isset($errors['name']) ? 'error-field' : ''; ?>">
                     <?php if (isset($errors['name'])): ?>
                         <div class="error-message"><?php echo htmlspecialchars($errors['name']); ?></div>
@@ -236,17 +236,15 @@ function isChecked($field) {
                 </label><br>
                 <label for="phone">
                     Телефон:<br>
-                    <input id="phone" type="tel" name="phone" placeholder="+7 952 812 52 52" required>
-    value="<?php echo htmlspecialchars(getFieldValue('phone')); ?>"
+                    <input id="phone" type="tel" name="phone" placeholder="+7 (918) 123-45-67" required
+                           value="<?php echo htmlspecialchars(getFieldValue('phone')); ?>"
                            class="<?php echo isset($errors['phone']) ? 'error-field' : ''; ?>">
                     <?php if (isset($errors['phone'])): ?>
                         <div class="error-message"><?php echo htmlspecialchars($errors['phone']); ?></div>
                     <?php endif; ?>
-                </label><br>
                 <label for="field-email">
                     Электронная почта:<br>
-                    <input id="field-email" name="email" type="email" placeholder="ex@example.ex" required>
-   <input id="email" name="email" type="email" placeholder="ogurec@example.com" required
+                     <input id="email" name="email" type="email" placeholder="ogurec@example.com" required
                            value="<?php echo htmlspecialchars(getFieldValue('email')); ?>"
                            class="<?php echo isset($errors['email']) ? 'error-field' : ''; ?>">
                     <?php if (isset($errors['email'])): ?>
@@ -255,8 +253,8 @@ function isChecked($field) {
                 </label><br>
                 <label for="field-date">
                     Дата рождения:<br>
-                    <input id="field-date" name="birthdate" type="date" required>
-value="<?php echo htmlspecialchars(getFieldValue('birthdate')); ?>"
+                   <input id="birthdate" name="birthdate" type="date" required
+                           value="<?php echo htmlspecialchars(getFieldValue('birthdate')); ?>"
                            class="<?php echo isset($errors['birthdate']) ? 'error-field' : ''; ?>">
                     <?php if (isset($errors['birthdate'])): ?>
                         <div class="error-message"><?php echo htmlspecialchars($errors['birthdate']); ?></div>
@@ -265,19 +263,23 @@ value="<?php echo htmlspecialchars(getFieldValue('birthdate')); ?>"
 
                     Выберите пол:<br>
                     <label for="male">
-                        <input id="male" type="radio" name="gender" value="male" required> Мужской
-<?php echo isSelected('gender', 'male'); ?>
+                         <input id="male" type="radio" name="gender" value="male" required
+                               <?php echo isSelected('gender', 'male'); ?>
                                class="<?php echo isset($errors['gender']) ? 'error-field' : ''; ?>"> Мужской
                     </label><br>
                     <label for="female">
-                        <input id="female" type="radio" name="gender" value="female"> Женский
-                                                       <?php echo isSelected('gender', 'female'); ?>
+                      <input id="female" type="radio" name="gender" value="female"
+                               <?php echo isSelected('gender', 'female'); ?>
                                class="<?php echo isset($errors['gender']) ? 'error-field' : ''; ?>"> Женский
-                    </label><br>
+                    </label>
+                    <?php if (isset($errors['gender'])): ?>
+                        <div class="error-message"><?php echo htmlspecialchars($errors['gender']); ?></div>
+                    <?php endif; ?>
+                    <br>
                 <label for="field-lang">
                     Любимый язык программирования:<br>
-                    <select id="field-lang" name="languages[]" multiple="multiple" required>
-                         class="<?php echo isset($errors['languages']) ? 'error-field' : ''; ?>" size="5">
+                   <select id="languages" name="languages[]" multiple="multiple" required
+                            class="<?php echo isset($errors['languages']) ? 'error-field' : ''; ?>" size="5">
                         <?php 
                         $allLanguages = ['Pascal', 'C', 'C++', 'JavaScript', 'PHP', 'Python', 'Java', 'Haskell', 'Clojure', 'Prolog', 'Scala'];
                         foreach ($allLanguages as $lang): ?>
@@ -288,10 +290,6 @@ value="<?php echo htmlspecialchars(getFieldValue('birthdate')); ?>"
                         <?php endforeach; ?>
                     </select>
                     <?php if (isset($errors['languages'])): ?>
-                        <div class="error-message"><?php echo htmlspecialchars($errors['languages']); ?></div>
-                    <?php endif; ?>
-                    </select>
-                     <?php if (isset($errors['languages'])): ?>
                         <div class="error-message"><?php echo htmlspecialchars($errors['languages']); ?></div>
                     <?php endif; ?>
                 </label><br>
