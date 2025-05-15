@@ -206,9 +206,8 @@ function isChecked($field) {
     </table>
 </div>
 
-
+        <div class="forma m-2 p-2 m-md-3" id="forma">
          <h1>Форма</h1>
-            
             <?php if (isset($_GET['success'])): ?>
                 <div class="success-message">Данные успешно сохранены!</div>
             <?php endif; ?>
