@@ -1,3 +1,75 @@
+<?php
+// Получаем данные из cookies
+$errors = [];
+$oldValues = [];
+$savedValues = [];
+
+if (isset($_COOKIE['form_errors'])) {
+    $errors = json_decode($_COOKIE['form_errors'], true);
+    $oldValues = json_decode($_COOKIE['old_values'], true);
+}
+
+// Получаем сохраненные значения
+foreach ($_COOKIE as $name => $value) {
+    if (strpos($name, 'saved_') === 0) {
+        $field = substr($name, 6);
+        $savedValues[$field] = $value;
+    }
+}
+
+// Функция для получения значения поля
+function getFieldValue($field, $default = '') {
+    global $oldValues, $savedValues;
+    
+    if (isset($oldValues[$field])) {
+        return $oldValues[$field];
+    }
+    
+    if (isset($savedValues[$field])) {
+        return $savedValues[$field];
+    }
+    
+    return $default;
+}
+
+// Функция для проверки выбранного значения
+function isSelected($field, $value) {
+    global $oldValues, $savedValues;
+    
+    $currentValues = [];
+    if (isset($oldValues[$field])) {
+        if ($field === 'languages') {
+            $currentValues = explode(',', $oldValues[$field]);
+        } else {
+            return $oldValues[$field] === $value ? 'checked' : '';
+        }
+    } elseif (isset($savedValues[$field])) {
+        if ($field === 'languages') {
+            $currentValues = explode(',', $savedValues[$field]);
+        } else {
+            return $savedValues[$field] === $value ? 'checked' : '';
+        }
+    }
+    
+    return in_array($value, $currentValues) ? 'selected' : '';
+}
+
+// Функция для проверки чекбокса
+function isChecked($field) {
+    global $oldValues, $savedValues;
+    
+    if (isset($oldValues[$field])) {
+        return $oldValues[$field] ? 'checked' : '';
+    }
+    
+    if (isset($savedValues[$field])) {
+        return $savedValues[$field] ? 'checked' : '';
+    }
+    
+    return '';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
