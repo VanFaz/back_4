@@ -3,7 +3,6 @@ body {
     box-sizing: border-box;
 }
 
-
 header {
     background-color: #76006c;
     position: relative;
@@ -12,21 +11,17 @@ header {
     justify-content: flex-start;
 }
 
-
 img.logo {
     height: 100px;
     width: 100px;
     border-radius: 100px;
-
 }
-
 
 nav.menu {
     background-color: rgb(120, 120, 120);
     border: 1px solid rgb(180, 180, 180);
     width: 100%;
 }
-
 
 div.hiper, div.forma, div.tabl {
     width: 100%;
@@ -71,6 +66,7 @@ table tr:nth-child(even) {
 table tr:nth-child(odd) {
     background-color: #ff45e6;
 }
+
 #important{
     text-align: center;
     order:3;
@@ -82,9 +78,77 @@ footer {
     text-align: center;
 }
 
+/* Стили для ошибок формы */
+.error-list {
+    color: #ff0000;
+    background-color: #ffeeee;
+    border: 1px solid #ff0000;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.error-list h3 {
+    margin-top: 0;
+    color: #ff0000;
+}
+
+.error-list ul {
+    margin-bottom: 0;
+    padding-left: 20px;
+}
+
+.error-message {
+    color: #ff0000;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.error-field {
+    border-color: #ff0000 !important;
+    background-color: #ffeeee !important;
+}
+
+.success-message {
+    color: #008000;
+    background-color: #eeffee;
+    border: 1px solid #008000;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+/* Стили для формы */
+.forma label {
+    display: block;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.forma input[type="text"],
+.forma input[type="tel"],
+.forma input[type="email"],
+.forma input[type="date"],
+.forma textarea,
+.forma select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.forma textarea {
+    height: 100px;
+}
+
+.forma input[type="submit"] {
+    margin-top: 15px;
+    padding: 10px 20px;
+}
 
 @media (min-width: 768px) {
-
     div.hiper, div.forma, div.tabl {
         max-width: 960px;
     }
@@ -96,41 +160,4 @@ footer {
     div.forma {
         order:1;
     }
-}
-
-.error-message {
-    color: #ff0000; /* Красный цвет текста ошибки */
-    font-size: 0.8em;
-    margin-top: 5px;
-    display: none; /* По умолчанию скрыты */
-}
-
-.error-field {
-    border: 2px solid #ff0000 !important; /* Красная рамка для ошибочных полей */
-    background-color: #ffeeee !important; /* Светло-красный фон */
-}
-
-/* Стили для отображения ошибок при валидации */
-input:invalid, 
-textarea:invalid, 
-select:invalid {
-    border-color: #ff9999;
-}
-
-input:focus:invalid, 
-textarea:focus:invalid, 
-select:focus:invalid {
-    box-shadow: 0 0 5px #ff9999;
-}
-
-/* Стиль для кнопки при наличии ошибок */
-.has-errors {
-    background-color: #ffcccc;
-    cursor: not-allowed;
-}
-
-/* Стиль для успешного заполнения */
-.valid-field {
-    border: 2px solid #00aa00 !important;
-    background-color: #eeffee !important;
 }
