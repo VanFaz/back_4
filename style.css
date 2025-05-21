@@ -97,3 +97,40 @@ footer {
         order:1;
     }
 }
+
+.error-message {
+    color: #ff0000; /* Красный цвет текста ошибки */
+    font-size: 0.8em;
+    margin-top: 5px;
+    display: none; /* По умолчанию скрыты */
+}
+
+.error-field {
+    border: 2px solid #ff0000 !important; /* Красная рамка для ошибочных полей */
+    background-color: #ffeeee !important; /* Светло-красный фон */
+}
+
+/* Стили для отображения ошибок при валидации */
+input:invalid, 
+textarea:invalid, 
+select:invalid {
+    border-color: #ff9999;
+}
+
+input:focus:invalid, 
+textarea:focus:invalid, 
+select:focus:invalid {
+    box-shadow: 0 0 5px #ff9999;
+}
+
+/* Стиль для кнопки при наличии ошибок */
+.has-errors {
+    background-color: #ffcccc;
+    cursor: not-allowed;
+}
+
+/* Стиль для успешного заполнения */
+.valid-field {
+    border: 2px solid #00aa00 !important;
+    background-color: #eeffee !important;
+}
